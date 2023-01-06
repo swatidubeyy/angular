@@ -1,0 +1,38 @@
+ 
+//To prevent Enter key except any value
+ if (evt.keyCode === 32) {
+   this.event.key = '';
+}
+
+//to prevent from special character and numbers
+if (!/^[a-zA-Z\s]*$/i.test(evt.key)) {
+   evt.preventDefault();
+}
+
+//To prevent Enter key
+if (evt.keyCode === 13) {
+   evt.preventDefault();
+   const data = result;
+    _that.searchPlaceBindOnMap(data[0]);
+}
+
+
+//To prevent paste(ctrl+v) key
+if (evt.keyCode === 17 || evt.keyCode === 86) {
+  evt.preventDefault();
+  this.event.key = '';  
+}
+
+
+//To prevent Copy(ctrl+c) key
+if (evt.keyCode === 17 || evt.keyCode === 67) {
+  evt.preventDefault();
+  this.event.key = '';  
+}
+
+where 
+17 is keycode of ctrl 
+86 is keycode of paste 
+67 is keycode of copy
+13 is keycode of Enter key
+67 is keycode of Enter except any value
