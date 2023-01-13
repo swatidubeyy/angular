@@ -1,0 +1,42 @@
+//In .html file where you want dynamic value ---->>>
+
+<a href="#">Jobs Applied</a><label> : {{this.jobCourse/*that variable name from .ts page*/?.jobappliedcount/*Column name from API*/ | number}}</label><br />
+<a href="#">internship Applied</a><label>: {{this.jobCourse/*that variable name from .ts page*/?.apprenappliedcount/*Column name from API*/ | number}}</label>
+      
+      
+         
+//In .ts file----->>> 
+//declare variable
+jobCourse: any;
+
+
+
+//call API  
+callApi =()=>{
+this.service.getInsightData/*function from service.ts page*/(this.stateName,this.districtName,this.candidateId, 'getJobCourse/*API Name*/').subscribe((Response:any[])=>{
+		let data: any;
+		data = Response;
+		this.jobCourse = data.data[0];
+	  })
+}
+
+
+
+//In service.ts file --->>>>
+getInsightData(
+    state_name: string,
+    district:string,
+    cand_id:string,
+    methodAPI:string
+  ){
+    let inputParams;
+    inputParams = 'stateName=' + state_name + '&district=' + district + cand_id + '&cand_id';
+    return this.http.get(environment.ApiUrlml + methodAPI + '?' + inputParams).pipe(catchError(this.handleError));
+  }
+  
+  
+  
+//In environment file ---->>>>
+  export const environment = {
+  ApiUrlml: "https://myCompanyJobCourse.co/",
+  };
