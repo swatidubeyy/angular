@@ -1,0 +1,12 @@
+to get recommendation on app to the users. 
+
+To set and get local session in angular--->>>>
+
+In .ts file 
+
+to set -->>
+localStorage.setItem('User', JSON.stringify({ Id: 123, name: name }));
+
+to get -->>
+let toUserRcmndtn = JSON.parse(localStorage.getItem('User'));
+console.log(toUserRcmndtn.Id)
