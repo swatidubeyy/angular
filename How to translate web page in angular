@@ -1,0 +1,70 @@
+To translate web page in angular----->>>
+
+Step1 --->>> 
+          Make json folder i18n having files like en.json(for english to english), gj.json(for english to gujrati), hi.json(for english to hindi) 
+          as many langauges as you want and translate every words of that page(which you want to be translated) in json files respencively.
+          eg--->>>
+              en.json(for english to english)
+              {
+              "login /* page name */": {
+                  "username /* words you want to translate */ ": "username",
+                  "password": "pass word",
+                },
+                "home /* pagename */": {
+                  "Happy": "Happy",
+                  "Shopping": "Happy"
+                },
+              }
+
+
+              gj.json(for english to gujrati)
+
+              {
+              "login /* page name */": {
+                  "username /* words you want to translate */ ": "વપરાશકર્તા નામ",
+                  "password": "ખાનગી શબ્દ",
+                },
+                "home /* page name */": {
+                  "Happy": "ખુશ",
+                  "Shopping": "ખરીદી"
+                },
+              }
+
+
+              hi.json(for english to hindi)
+
+              {
+              "login /* page name */": {
+                  "username /* words you want to translate */ ": "उपयोगकर्ता नाम",
+                  "password": "कूटशब्द",
+                },
+                "home /* page name */": {
+                  "Happy": "शुभकामनाएं",
+                  "Shopping": "खरीदारी के लिए "
+                },
+              }
+              
+              
+Step2 --->>>>> in .html page
+
+//for login
+  <mat-form-field>
+        <input matInput [(ngModel)]="username" name="username" required>
+        <mat-error>
+          {{"login.username" | translate}
+        </mat-error>
+      </mat-form-field>
+  
+  <mat-form-field>
+        <input matInput type="password" [(ngModel)]="password" name="password" required>
+        <mat-error>
+          {{"login.password" | translate}}
+        </mat-error>
+      </mat-form-field>
+      
+//for home page
+  <h4>{{"home.Happy" | translate}}! {{"home.Shopping" | translate}}</h4>
+  
+  
+  
+  
