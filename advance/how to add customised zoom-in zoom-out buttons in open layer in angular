@@ -1,0 +1,25 @@
+To add customised zoom-in zoom-out buttons in open layer in angular
+
+.html --->>>>>>>>>>
+
+<button mat-raised-button id="zoomin" class="fullview" (click)="zoom(-1)"
+            style="z-index: 1;height: 45px; position: absolute;right: 10px;margin-top: 150px;">
+            <i style="margin-left: -9px;"class="fa-solid fa-minus"></i>
+        </button>
+        <button mat-raised-button id="zoomout" class="fullview" (click)="zoom(+1)"
+            style="z-index: 1;height: 45px; position: absolute;right: 10px;margin-top: 196px;">
+            <i style="margin-left: -9px;" class="fa-solid fa-plus"></i>
+        </button>
+       
+.ts --->>>>>>>>>>
+
+  zoom(count){
+    const view = this.map.getView();
+    const zoom = view.getZoom();
+    view.animate({ zoom: zoom + count})
+  }
+  
+  stop default zoom-in & zoom-out to be worked --->>>
+  loadMap = () => {
+      controls: [],
+  }
