@@ -2,11 +2,11 @@ To add customised zoom-in zoom-out buttons in open layer in angular
 
 .html --->>>>>>>>>>
 
-<button mat-raised-button id="zoomin" class="fullview" (click)="zoom(-1)"
+<button mat-raised-button id="zoomin" (click)="zoom(-1)"
             style="z-index: 1;height: 45px; position: absolute;right: 10px;margin-top: 150px;">
             <i style="margin-left: -9px;"class="fa-solid fa-minus"></i>
         </button>
-        <button mat-raised-button id="zoomout" class="fullview" (click)="zoom(+1)"
+        <button mat-raised-button id="zoomout" (click)="zoom(+1)"
             style="z-index: 1;height: 45px; position: absolute;right: 10px;margin-top: 196px;">
             <i style="margin-left: -9px;" class="fa-solid fa-plus"></i>
         </button>
@@ -23,3 +23,32 @@ To add customised zoom-in zoom-out buttons in open layer in angular
   loadMap = () => {
       controls: [],
   }
+  
+  
+  .css ---->>>>
+  
+   #zoomin {
+        background-color: var(--white);
+        border: none;
+        color: black;
+        padding: 2px 20px;
+        font-size: 15px;
+        cursor: pointer;
+        border-radius: 10px 10px 0px 0px;
+        /* box-shadow: 0px 0px 15px #888888; */
+        z-index: 1;
+        position: absolute;
+      }
+
+      #zoomout{
+        background-color: var(--white);
+        border: none;
+        color: black;
+        padding: 2px 20px;
+        font-size: 15px;
+        cursor: pointer;
+        border-radius: 0px 0px 10px 10px;
+        /* box-shadow: 0px 0px 15px #888888; */
+        z-index: 1;
+        position: absolute;
+      }
