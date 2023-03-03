@@ -1,0 +1,76 @@
+
+//html page
+
+<h4 style="width: 44px;
+          height: 22px;
+          left: 130px;
+          top: 243px;
+          margin-left: 12px;
+          margin-top: 15px;         
+          font-family: 'Figtree';
+          font-style: normal;
+          font-weight: 700;
+          font-size: 18px;
+          line-height: 22px; color: #333333;">Filter</h4>
+
+          <div style="width: 373px;
+          margin-left: 12px; margin-top: 5px;">
+            <mat-form-field appearance="outline" fullWidth>
+              <mat-label>State</mat-label>
+              <mat-select #matSelect placeholder="Select State" required>
+                <mat-option *ngFor="let filterstate of filterstates" [value]="filterstate.value">{{filterstate.viewValue}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <div style="width: 373px;
+          margin-left: 12px; margin-top: 5px;">
+            <mat-form-field appearance="outline" fullWidth>
+              <mat-label>District</mat-label>
+              <mat-select #matSelect placeholder="Select District" required>
+                <mat-option *ngFor="let FilterDistrict of filterDistricts" [value]="FilterDistrict.value">{{FilterDistrict.viewValue}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <button class="hov" mat-button>
+            <span style="display: flex;
+                  flex-direction: row;
+                  justify-content: center;
+                  align-items: center;
+                  padding: 8px 20px;gap: 10px;
+                  width: 77px;
+                  height: 30px;background: #EF7E22;
+                  border-radius: 10px;
+                  flex: none;
+                  order: 0;
+                  flex-grow: 0;">APPLY</span>
+          </button>
+          
+   // ts page
+   
+      interface FilterState {
+        value: string;
+        viewValue: string;
+      }
+
+      interface FilterDistrict {
+        value: string;
+        viewValue: string;
+      }
+
+
+   
+     filterstates: FilterState[] = [
+    {value: 'up-0', viewValue: 'U.P.'},
+    {value: 'Punjab-1', viewValue: 'Punjab'},
+    {value: 'Haryana-2', viewValue: 'Haryana'},
+    {value: 'Lucknow-2', viewValue: 'Lucknow'},
+      ];
+
+      filterDistricts:  FilterDistrict[] = [
+        {value: 'Pratapgarh-0', viewValue: 'Pratapgarh'},
+        {value: 'Delhi-1', viewValue: 'Delhi'},
+        {value: 'gurgaon-2', viewValue: 'gurgaon'},
+        {value: 'chandigarh-2', viewValue: 'chandigarh'},
+      ];
