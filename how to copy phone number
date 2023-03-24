@@ -1,0 +1,15 @@
+//html file
+
+<p (click)="phoneNoAction(item.MobileNumb)">
+    {{item.MobileNumb}}</p>
+    
+<button class="copy">copy the mob. no.</button>
+
+
+//ts file
+
+phoneNoAction = (mobile) => {
+    $('.copy').on('click', () =>{
+      navigator['clipboard'].writeText(mobile).then().catch(e => console.error(e));
+    })
+  }
