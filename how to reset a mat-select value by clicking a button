@@ -1,0 +1,36 @@
+HTML file ------->>>>>>>>>
+
+<mat-form-field appearance="outline">
+   <mat-label>Measurement</mat-label>
+     <mat-select (selectionChange)="onFunChange($event)"      [value]="RemoveDefaultSelectValue" id="type" placeholder="Select Measurement" #MeasurementValue>
+  <mat-option *ngFor="let measurement of measurements [value]="measurement.value">{{measurement.viewValue}}</mat-option>
+  </mat-select>
+</mat-form-field>
+                        
+                        
+<button id="stopmesrment" type="button" class="btn btn-secondary btn-sm">clear measurement</button>
+
+
+
+
+TS file --------->>>>>>>>
+
+interface measurement {
+  value: string;
+  viewValue: string;
+}
+export class SelectOverviewExample {
+ RemoveDefaultSelectValue : any;
+ 
+  measurements: measurement[] = [
+      {value: 'LineString', viewValue: 'Line String'},
+      {value: 'Polygon', viewValue: 'Area'},
+  ];
+}
+onFunChange = function(value){
+    let valv = this.value;
+    this.RemoveDefaultSelectValue = valv;
+    $("#stopmesrment").on('click', () =>{
+      this.RemoveDefaultSelectValue = {};
+    });
+  }
