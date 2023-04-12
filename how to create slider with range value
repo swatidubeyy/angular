@@ -1,0 +1,19 @@
+html file------------->>>>>
+
+<div style="display: none;" class="openSlider">
+                  <label style="background-color: rgb(230, 234, 247);
+                  margin-left: 116px;
+                  display: flex;
+                  width: 25px;" id="rangeValue">0</label>
+                  <input style="
+                    margin-left: 115px;
+                    margin-top: 13px;" type="range" min="1" max="100" value="50" class="slider" #range
+                    (change)="getRange(range.value)">
+                </div>
+                
+                
+ts file ------->>>>> 
+
+getRange= (value) => {
+    document.getElementById('rangeValue').innerHTML = value;
+  }
