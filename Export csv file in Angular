@@ -1,0 +1,63 @@
+ts file ------>>>>>>
+
+mockCsvData: string;
+	mockHeaders = `product,sum
+	`
+selectedODOPExport = [] //declare array you want to export
+	convertToCSV(objArray) {
+		var array = typeof objArray != 'object' ? JSON.parse(objArray) : objArray;
+		var str = '';
+
+		for (var i = 0; i < array.length; i++) {
+			var line = '';
+			for (var index in array[i]) {
+				if (line != '') line += ','
+				line += array[i][index];
+			}
+			str += line + '\r\n';
+		}
+		return str;
+	}
+
+	formatToCsvData() {
+		let itemsFormatted = [];
+		this.selectedODOPExport.forEach((item) => {
+			debugger
+			itemsFormatted.push({
+				product: item.product.replace(/,/g, ''), // remove commas
+				sum: item.sum,
+			});
+		});
+		const jsonObject = JSON.stringify(itemsFormatted);
+		const csv = this.convertToCSV(jsonObject);
+		this.mockCsvData = this.mockHeaders + csv;
+	}
+
+	fileTitle = 'export-result';
+}
+
+onExportCSV = () => {
+this.formatToCsvData()
+			const exportedFilenmae = this.fileTitle + '.csv';
+			const blob = new Blob([this.mockCsvData], { type: 'text/csv;charset=utf-8;' });
+			if (navigator.msSaveBlob) {
+				navigator.msSaveBlob(blob, exportedFilenmae);
+			} else {
+				const link = document.createElement('a');
+				if (link.download !== undefined) {
+					const url = URL.createObjectURL(blob);
+					link.setAttribute('href', url);
+					link.setAttribute('download', exportedFilenmae);
+					link.style.visibility = 'hidden';
+					document.body.appendChild(link);
+					link.click();
+					document.body.removeChild(link);
+				}
+			}
+}
+
+declare global {
+	interface Navigator {
+		msSaveBlob?: (blob: any, defaultName?: string) => boolean
+	}
+}
