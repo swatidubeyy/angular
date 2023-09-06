@@ -1,0 +1,14 @@
+Open up command prompt in the directory of your project.
+Install file-saver by typing npm install --save file-saver
+import { saveAs } from 'file-saver'; into your .ts file.
+Here is the updated code based on the new import.
+downloadFile(data: any) {
+    const replacer = (key, value) => value === null ? '' : value; // specify how you want to handle null values here
+    const header = Object.keys(data[0]);
+    let csv = data.map(row => header.map(fieldName => JSON.stringify(row[fieldName], replacer)).join(','));
+    csv.unshift(header.join(','));
+    let csvArray = csv.join('\r\n');
+
+    var blob = new Blob([csvArray], {type: 'text/csv' })
+    saveAs(blob, "myFile.csv");
+}
